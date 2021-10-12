@@ -1,5 +1,12 @@
 from django.shortcuts import render
+from .models import Item
 
 # Create your views here.
+
+
 def get_home(request):
-    return render(request, 'todo/home.html')
+    items = Item.objects.all()
+    context = {
+        'items': items
+    }
+    return render(request, 'todo/home.html', context)
